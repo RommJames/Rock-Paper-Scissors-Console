@@ -124,6 +124,10 @@ function playGame(rounds){
     
     for(let ctr = 1; ctr <= rounds; ctr++){        
         getHumanChoice = prompt("What's your attack? Rock-Paper-Scissors")
+        if(!getHumanChoice){
+            alert("Please make an attack. Rock-Paper-Scissors")
+            playGame(rounds)
+        }
         let computerChoice = getComputerChoice()
         playRound(getHumanChoice.toUpperCase(), computerChoice)
         overallMessage == "Invalid Choices! Try Again!" && ctr-- 
