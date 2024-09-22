@@ -133,6 +133,11 @@ function playGame(rounds){
 
 function gameRound(){
     gameRound = prompt("How many rounds do you want to play Rock-Paper-Scissors game with the Computer?")
+
+    if(!gameRound){
+        alert("Let's Play Please. Only 3 rounds, okay?")
+        playGame(3)
+    }
 }
 
 function main(){
