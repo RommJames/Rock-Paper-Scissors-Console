@@ -43,7 +43,7 @@ function playRound(humanChoice, computerChoice){
     let tieMessage = "It's a tie!"
    
     console.log(
-        `Human Choice: ${humanChoice} \nComputer Choice: ${computerChoice.toUpperCase()}
+        `Your Choice: ${humanChoice} \nComputer Choice: ${computerChoice.toUpperCase()}
         `
     )
 
@@ -95,15 +95,15 @@ function playRound(humanChoice, computerChoice){
         
     }else{
 
-        console.log("Invalid Choices!")
-        overallMessage = "Invalid Choices!"
+        console.log("Invalid Choices! Try Again!")
+        overallMessage = "Invalid Choices! Try Again!"
 
     }
 
     console.log(
         `Scoreboard:
-            - HumanScore: ${humanScore}
-            - ComputerScore: ${computerScore}
+            - Your Score: ${humanScore}
+            - Computer Score: ${computerScore}
         `
     )
 
@@ -111,8 +111,8 @@ function playRound(humanChoice, computerChoice){
         `
         Computer Attack: ${computerChoice.toUpperCase()}
         Scoreboard:
-            - HumanScore: ${humanScore}
-            - ComputerScore: ${computerScore}
+            - Your Score: ${humanScore}
+            - Computer Score: ${computerScore}
         -------------------------------------
         ${overallMessage}        
         `
@@ -126,12 +126,33 @@ function playGame(rounds){
         getHumanChoice = prompt("What's your attack? Rock-Paper-Scissors")
         let computerChoice = getComputerChoice()
         playRound(getHumanChoice.toUpperCase(), computerChoice)
-        overallMessage == "Invalid Choices!" && ctr-- 
+        overallMessage == "Invalid Choices! Try Again!" && ctr-- 
     }
 
 }   
 
-playGame(5)
+function gameRound(){
+    gameRound = prompt("How many rounds do you want to play Rock-Paper-Scissors game with the Computer?")
+}
+
+function main(){
+    const userConfirmed = confirm("Welcome to Rock-Paper-Scissor Game! Do you want to play?")
+    if(userConfirmed){
+        alert("Great! Let's play!")
+        gameRound()
+        // console.log(gameRound)
+        playGame(gameRound)
+    }else{
+        alert("Okay, Bye!")
+        window.location.href = "https://w0.peakpx.com/wallpaper/955/383/HD-wallpaper-inside-out-emotion-sadness.jpg"
+        window.close();
+    }
+}
+
+main()
+
+
+// playGame(5)
 
 // main()
 // console.log("Computer Attacks: ", getComputerChoice())
