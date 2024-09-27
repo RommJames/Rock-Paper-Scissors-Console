@@ -145,11 +145,11 @@ function gameRound(){
 }
 
 function main(){
+
     const userConfirmed = confirm("Welcome to Rock-Paper-Scissor Game! Do you want to play?")
     if(userConfirmed){
         alert("Great! Let's play!")
-        gameRound()
-        // console.log(gameRound)
+        gameRound()        
         playGame(gameRound)
     }else{
         alert("Okay, Bye!")
@@ -158,7 +158,7 @@ function main(){
     }
 }
 
-main()
+// main()
 
 
 // playGame(5)
