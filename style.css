@@ -1,0 +1,20 @@
+/* Setting Up Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+:root{
+    --Earth: #8B5A2B; /* Rock */
+    --Water: #87CEFA; /* Paper */
+    --Fire: #FF4500; /* Scissors*/
+    --Air: #8b8162;
+    --bg-game: #F5F5F5;
+    --txt-color: #333333 ;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Righteous";
+    /* font-family: fantasy; */
+}
