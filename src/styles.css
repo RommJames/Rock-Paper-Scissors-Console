@@ -51,7 +51,7 @@
 }
 
 #game-field{
-    background: rgb(215, 227, 236);
+    background: rgba(215, 227, 236,0.5);
     width: 100%;
     height: 100%;
     box-shadow: 5px 0px 10px 5px rgba(0, 0, 0, 0.1) inset; 
@@ -68,6 +68,31 @@
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+/* Edit Round */
+.number-input {
+    border: none; /* No border */
+    border-bottom: 2px solid #000; /* Bottom border */
+    background: transparent; /* Transparent background */
+    width: 60px; /* Adjust width as needed */
+    margin-left: 10px; /* Space between label and input */
+    padding: 5px; /* Padding for a better appearance */
+    font-size: 1.5rem; /* Font size */
+    text-align: center;
+}
+
+/* Hide the default spinner arrows */
+.number-input::-webkit-inner-spin-button,
+.number-input::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Hides the spinner */
+    margin: 0; /* Removes margin */
+}
+
+.number-input:focus {
+    outline: none; /* Remove default focus outline */
+    border-bottom: 2px solid #007BFF; /* Change color on focus */
 }
 
 /* Game Field */
@@ -79,6 +104,8 @@
 }
 
 #game-result{
+    opacity: 0;
+    transform: scale(0.7);
     display: inline-block;
     background-color: white;
     font-size: 2rem;
@@ -89,6 +116,26 @@
     margin-top: 50px;
 }
 
+.attack{
+    opacity: 0;
+    transform: translateY(5%);
+}
+
+.attack-animation{    
+    animation: attack both 1 0.5s ease-in-out;
+}
+
+.game-result-animation{    
+    animation: pop forwards 1 0.5s ease-in-out;
+}
+
+#total-round:hover{
+    display: inline-block;
+    /* box-shadow: 5px 0px 10px 5px rgba(0, 0, 0, 0.2);     */
+    cursor: pointer;
+    padding: 0px 10px;
+    border-bottom: 2px solid #180a29;
+}
 
 /* Choices - Controls*/
 
@@ -134,6 +181,48 @@
 
 .choices:hover img{
     transform: translateY(-5px) scale(1.1); /* Move up and slightly enlarge */    
+}
+
+/* Game Over Panel */
+
+#game-over{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-over-panel{
+    background-color: white;
+    
+}
+
+/* Animation */
+@keyframes attack{
+    0%{
+        opacity: 0;
+        transform: translateY(5%);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes pop{
+    0%{
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* Responsive Web Design */

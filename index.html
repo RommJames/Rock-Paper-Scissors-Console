@@ -8,6 +8,18 @@
     <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <!-- <div id="game-over">
+        <div id="game-over-panel">
+            <h1>Game Over!</h1>
+            <p id="winner">Winner</p>
+            <div id="game-over-controls">
+                <a href="">Play Again</a>
+                <div id="view-score">
+                    View Score
+                </div>
+            </div>
+        </div>
+    </div> -->
     <div id="container">
         <div id="scoreboard">
             <h1>Scoreboard</h1>
@@ -24,8 +36,8 @@
                         0                    
                     </span>
                     /
-                    <span id="total-round">
-                        0
+                    <span id="total-round" title="Edit Total Rounds">
+                        5
                     </span>
                 </div>                
             </div>
@@ -44,9 +56,15 @@
         <div id="controls">
             <h1>Choose your attack</h1>
             <div id="options">
-                <div class="choices" id="op-rock"><img src="media/rock.png" alt="rock"></div>
-                <div class="choices" id="op-paper"><img src="media/paper.png" alt="paper"></div>
-                <div class="choices"><img src="media/scissors.png" alt="scissors" id="op-scissors"></div>
+                <div class="choices">
+                    <img src="media/rock.png" alt="rock" id="op-rock">
+                </div>
+                <div class="choices">
+                    <img src="media/paper.png" alt="paper" id="op-paper">
+                </div>
+                <div class="choices">
+                    <img src="media/scissors.png" alt="scissors" id="op-scissors">
+                </div>
             </div>            
         </div>
     </div>    

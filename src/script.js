@@ -101,22 +101,15 @@ function playRound(humanChoice, computerChoice){
     }
 
     console.log(
-        `Scoreboard:
-            - Your Score: ${humanScore}
-            - Computer Score: ${computerScore}
-        `
-    )
-
-    alert(
         `
         Computer Attack: ${computerChoice.toUpperCase()}
         Scoreboard:
             - Your Score: ${humanScore}
             - Computer Score: ${computerScore}
-        -------------------------------------
-        ${overallMessage}        
         `
     )
+
+    updateScoreBoard(overallMessage, humanChoice, computerChoice);
 }
 let ctrRounds
 
@@ -135,15 +128,6 @@ function playGame(rounds){
 
 }   
 
-function gameRound(){
-    gameRound = prompt("How many rounds do you want to play Rock-Paper-Scissors game with the Computer?")
-
-    if(!gameRound){
-        alert("Let's Play Please. Only 3 rounds, okay?")
-        playGame(3)
-    }
-}
-
 function main(){
     const userConfirmed = confirm("Welcome to Rock-Paper-Scissor Game! Do you want to play?")
     if(userConfirmed){
@@ -158,8 +142,131 @@ function main(){
     }
 }
 
-// main()
-// playGame(5)
+// DOM Manipulations
+//----- get all elements needed
+//get scoreboard elements
+const userScoreHTML = document.querySelector("#user-score");
+const computerScoreHTML = document.querySelector("#computer-score");
+const currentRoundHTML = document.querySelector("#current-round");
+const totalRoundHTML = document.querySelector("#total-round");
 
-// main()
-// console.log("Computer Attacks: ", getComputerChoice())
+// get game-field elements
+const userAttackHTML = document.querySelector("#user-attack");
+const gameResultHTML = document.querySelector("#game-result");
+const computerAttackHTML = document.querySelector("#computer-attack");
+
+// controls
+const optionsHTML = document.querySelector("#options")
+
+// Trigger User Attack
+optionsHTML.addEventListener("click", (event)=>{
+    let target = defaultRounds != currentRound ? event.target : "disable";
+    let computerChoice = getComputerChoice()
+
+    switch(target.id) {
+        case 'op-rock':
+            playRound("ROCK", computerChoice);
+            break;
+        case 'op-paper':
+            playRound("PAPER", computerChoice);
+            break;            
+        case 'op-scissors':
+            playRound("SCISSORS", computerChoice);
+            break;     
+        default:
+            gameOver()
+            break;   
+    }
+})
+
+// Dynamic Scoreboard
+function updateScoreBoard(message, userAttack, computerAttack){
+    userScoreHTML.textContent = humanScore;
+    computerScoreHTML.textContent = computerScore;
+    gameResultHTML.textContent = message;  
+    gameAnimation(userAttack, computerAttack);
+    checkRounds();
+}
+
+// Trigger Animation
+
+function gameAnimation(userAttack, computerAttack){
+    
+    gameResultHTML.classList.add("game-result-animation");
+    userAttackHTML.classList.add("attack-animation");
+    computerAttackHTML.classList.add("attack-animation");
+
+    gameResultHTML.style.opacity = "1";
+    gameResultHTML.style.transform = "scale(1)";
+    // Can be loop but for now I make it like sequence
+    userAttackHTML.style.opacity = "1";
+    userAttackHTML.style.transform = "translateY(0%)"
+    computerAttackHTML.style.opacity = "1";
+    computerAttackHTML.style.transform = "translateY(0%)"
+    setTimeout(() => {
+        gameResultHTML.classList.remove
+        ('game-result-animation');        
+        userAttackHTML.classList.remove("attack-animation");
+        computerAttackHTML.classList.remove("attack-animation");
+    }, 500);
+
+    attackAnimation(userAttack, computerAttack)
+
+}
+
+function attackAnimation(humanChoice, computerChoice){
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
+    userAttackHTML.innerHTML = 
+    `
+        <img src="media/${humanChoice}.png" alt="${humanChoice} attack">
+    `   
+    computerAttackHTML.innerHTML =
+    `
+        <img src="media/${computerChoice}.png" alt="${computerChoice} attack">
+    `
+}
+
+// Dynamic Rounds
+let defaultRounds = 5
+let currentRound = 0
+checkRounds();
+function checkRounds(){
+    currentRound++
+    currentRoundHTML.textContent = currentRound
+    totalRoundHTML.textContent = defaultRounds
+    defaultRounds == currentRound && alert("Game over");    
+}
+
+// Edit Rounds
+totalRoundHTML.addEventListener("click", (e)=>{
+    let target = e.target
+    const input = document.createElement("input");
+    input.type = "number";
+    input.setAttribute("class", "number-input")
+    input.value = target.textContent
+
+    input.addEventListener('blur', () => {
+        updateRounds(target, input)
+    });
+
+    input.addEventListener('keyup', (e)=>{
+        e.key == "Enter" && updateRounds(target, input);
+    })
+
+    target.style.display = 'none';
+    target.parentNode.insertBefore(input, target);
+    input.focus();
+})
+
+function updateRounds(target, input){
+    target.textContent = input.value;
+    defaultRounds = input.value
+    target.style.display = 'inline';
+    input.remove();
+}
+
+// Game Over
+function gameOver(){
+    console.log("Game Over");
+}
