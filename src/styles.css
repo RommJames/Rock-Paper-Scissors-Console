@@ -114,6 +114,7 @@
     text-wrap:wrap;
     align-self: baseline;
     margin-top: 50px;
+    text-align: center;
 }
 
 .attack{
@@ -311,3 +312,11 @@
         font-size: 0.9rem;
     }
 }
+/* 
+@media (max-width: 400px) {
+    .choices, .attack{
+        height: 80px;
+        width: 80px;
+    }
+
+} */
