@@ -186,6 +186,8 @@
 /* Game Over Panel */
 
 #game-over{
+    transform: scaleY(0);
+    transform-origin: top;
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -196,8 +198,52 @@
 }
 
 #game-over-panel{
+    opacity: 0;
+    transform: scale(0);
     background-color: white;
-    
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2) inset;
+    padding: 25px 30px;
+    font-size: 35px;
+    text-align: center;
+    margin: 15px;
+    border-radius: 15px;
+}
+
+.btn-controls{
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 10px;
+    border-radius: 15px;
+}
+
+.btn-controls:hover{
+    transform: translateY(-5%);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+#winner{
+    text-decoration: underline;
+    color: #180a29;
+}
+
+#play-again{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(0, 189, 25);
+}
+
+#view-score{
+    display: inline-block;
+    color: white;
+    background-color: #0164ce;
+    cursor: pointer;
+}
+
+.note{
+    font-style: italic;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: gray;
 }
 
 /* Animation */

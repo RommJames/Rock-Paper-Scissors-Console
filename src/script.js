@@ -111,36 +111,6 @@ function playRound(humanChoice, computerChoice){
 
     updateScoreBoard(overallMessage, humanChoice, computerChoice);
 }
-let ctrRounds
-
-function playGame(rounds){    
-    
-    for(let ctr = 1; ctr <= rounds; ctr++){        
-        getHumanChoice = prompt("What's your attack? Rock-Paper-Scissors")
-        if(!getHumanChoice){
-            alert("Please make an attack. Rock-Paper-Scissors")
-            playGame(rounds)
-        }
-        let computerChoice = getComputerChoice()
-        playRound(getHumanChoice.toUpperCase(), computerChoice)
-        overallMessage == "Invalid Choices! Try Again!" && ctr-- 
-    }
-
-}   
-
-function main(){
-    const userConfirmed = confirm("Welcome to Rock-Paper-Scissor Game! Do you want to play?")
-    if(userConfirmed){
-        alert("Great! Let's play!")
-        gameRound()
-        // console.log(gameRound)
-        playGame(gameRound)
-    }else{
-        alert("Okay, Bye!")
-        window.location.href = "https://w0.peakpx.com/wallpaper/955/383/HD-wallpaper-inside-out-emotion-sadness.jpg"
-        window.close();
-    }
-}
 
 // DOM Manipulations
 //----- get all elements needed
@@ -160,7 +130,7 @@ const optionsHTML = document.querySelector("#options")
 
 // Trigger User Attack
 optionsHTML.addEventListener("click", (event)=>{
-    let target = defaultRounds != currentRound ? event.target : "disable";
+    let target = defaultRounds >= currentRound ? event.target : "disable";
     let computerChoice = getComputerChoice()
 
     switch(target.id) {
@@ -173,9 +143,6 @@ optionsHTML.addEventListener("click", (event)=>{
         case 'op-scissors':
             playRound("SCISSORS", computerChoice);
             break;     
-        default:
-            gameOver()
-            break;   
     }
 })
 
@@ -229,13 +196,13 @@ function attackAnimation(humanChoice, computerChoice){
 
 // Dynamic Rounds
 let defaultRounds = 5
-let currentRound = 0
-checkRounds();
+let currentRound = 1
+// checkRounds();
 function checkRounds(){
-    currentRound++
-    currentRoundHTML.textContent = currentRound
-    totalRoundHTML.textContent = defaultRounds
-    defaultRounds == currentRound && alert("Game over");    
+    defaultRounds <= currentRound ? gameOver(): currentRound++;
+    totalRoundHTML.textContent = defaultRounds        
+    currentRoundHTML.textContent = currentRound    
+    
 }
 
 // Edit Rounds
@@ -267,6 +234,34 @@ function updateRounds(target, input){
 }
 
 // Game Over
+// ---- Get Game Over Panel
+const gameOverHTML = document.querySelector("#game-over");
+const gameOverPanelHTML = document.querySelector("#game-over-panel");
+const winnerHTML = document.querySelector("#winner");
+const viewScoreHTML = document.querySelector("#view-score");
+
 function gameOver(){
-    console.log("Game Over");
+    let gameResult = ""
+    if(humanScore > computerScore){
+        gameResult = "Congratulations! You’ve won the game! 🎉"
+    }else if(computerScore > humanScore){
+        gameResult = "Oops! The computer won this round. Better luck next time!"
+    }else{
+        gameResult = "It’s a tie! Well played on both sides!"
+    }
+
+    winnerHTML.textContent = gameResult;
+    gameOverHTML.style.transform = "scaleY(1)"
+    setTimeout(() => {
+        gameOverPanelHTML.style.opacity = "1"
+        gameOverPanelHTML.style.transform = "scale(1)"
+    }, 500);
 }
+
+viewScoreHTML.addEventListener("click",()=>{
+    gameOverPanelHTML.style.opacity = "0"
+        gameOverPanelHTML.style.transform = "scale(0)"
+    setTimeout(() => {
+        gameOverHTML.style.transform = "scaleY(0)"
+    }, 500);
+})

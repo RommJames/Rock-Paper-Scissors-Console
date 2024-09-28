@@ -8,18 +8,19 @@
     <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- <div id="game-over">
+    <div id="game-over">
         <div id="game-over-panel">
             <h1>Game Over!</h1>
-            <p id="winner">Winner</p>
+            <p id="winner">You Won!</p>
             <div id="game-over-controls">
-                <a href="">Play Again</a>
-                <div id="view-score">
+                <a href="index.html" id="play-again" class="btn-controls">Play Again</a>
+                <div id="view-score" class="btn-controls">
                     View Score
                 </div>
             </div>
+            <p class="note"> &#x24D8; You can edit the game rounds by clicking the limit rounds number (5) at the bottom of the scoreboard panel. </p>
         </div>
-    </div> -->
+    </div>
     <div id="container">
         <div id="scoreboard">
             <h1>Scoreboard</h1>
@@ -33,7 +34,7 @@
                 <b>Rounds: </b>
                 <div class="rounds-remaining">
                     <span id="current-round">
-                        0                    
+                        1                  
                     </span>
                     /
                     <span id="total-round" title="Edit Total Rounds">
@@ -65,7 +66,8 @@
                 <div class="choices">
                     <img src="media/scissors.png" alt="scissors" id="op-scissors">
                 </div>
-            </div>            
+            </div>      
+            <p class="note"> Copyright &copy; 2024 Romm James </p>      
         </div>
     </div>    
     <script src="src/script.js"></script>
