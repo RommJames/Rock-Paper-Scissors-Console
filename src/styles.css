@@ -1,0 +1,178 @@
+/* Setting styles */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Bangers", "Impact", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: all .3s ease-in-out;
+}
+
+#container{
+    height: 100vh;
+    background: linear-gradient(135deg, #ffe6b5, #ff99cc);
+    overflow: hidden;
+}
+
+/* Scoreboard */
+#scoreboard{    
+    padding: 15px 15px 0px;
+    width: 500px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 0px 10px 5px rgba(0, 0, 0, 0.1);    
+    margin: 15px auto;
+}
+
+#scoreboard h1{
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 3rem;
+}
+
+#scoreboard ul{
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+.scores{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;    
+}
+
+.score{
+    text-align: right;
+}
+
+#user-score, ul li:nth-child(1){
+    color: rgb(23, 23, 78);    
+}
+
+#game-field{
+    background: rgb(215, 227, 236);
+    width: 100%;
+    height: 100%;
+    box-shadow: 5px 0px 10px 5px rgba(0, 0, 0, 0.1) inset; 
+    border-radius: 50px;
+}
+
+.rounds{
+    width: 300px;
+    font-size: 1.3rem;
+    padding: 5px;
+    margin: 10px auto;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Game Field */
+#game-field{
+    position: relative;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;    
+}
+
+#game-result{
+    display: inline-block;
+    background-color: white;
+    font-size: 2rem;
+    padding: 15px;
+    border-radius: 5px;
+    text-wrap:wrap;
+    align-self: baseline;
+    margin-top: 50px;
+}
+
+
+/* Choices - Controls*/
+
+#controls{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    background: linear-gradient(135deg, #b2e0e0, #d4f1f9);
+    box-shadow: 5px 0px 10px 5px rgba(0, 0, 0, 0.2);    
+}
+
+#options{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;    
+}
+
+.choices, .attack{        
+    height: 150px;
+    width: 150px;    
+    padding: 15px;
+    margin: 5px 15px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.choices img, .attack img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.choices:hover{
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.choices:hover img{
+    transform: translateY(-5px) scale(1.1); /* Move up and slightly enlarge */    
+}
+
+/* Responsive Web Design */
+
+@media (max-width: 500px) {
+    #game-field{
+        flex-wrap: wrap;
+        align-content:flex-start;
+    }
+
+    #game-result{
+        margin: 5px;
+    }
+
+    .choices, .attack{
+        height: 100px;
+        width: 100px;
+    }
+
+    #scoreboard{
+        width: 300px;
+    }
+
+
+    #scoreboard h1{        
+        font-size: 2rem;
+    }
+
+    #game-result{        
+        font-size: 1.5rem;        
+    }
+
+    #scoreboard ul{
+        list-style: none;
+        font-size: 1rem;
+    }
+
+    .rounds{
+        width: 150px;        
+        font-size: 0.9rem;
+    }
+}

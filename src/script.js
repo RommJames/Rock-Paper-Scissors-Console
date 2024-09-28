@@ -158,9 +158,7 @@ function main(){
     }
 }
 
-main()
-
-
+// main()
 // playGame(5)
 
 // main()

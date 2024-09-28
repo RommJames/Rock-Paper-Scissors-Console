@@ -4,8 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
 </head>
-<body>    
-    <script src="script.js"></script>
+<body>
+    <div id="container">
+        <div id="scoreboard">
+            <h1>Scoreboard</h1>
+            <ul class="scores">
+                <li>Your Score: </li>
+                <li id="user-score" class="score">0</li>
+                <li>Computer Score: </li>
+                <li id="computer-score" class="score">0</li>
+            </ul>
+            <div class="rounds">
+                <b>Rounds: </b>
+                <div class="rounds-remaining">
+                    <span id="current-round">
+                        0                    
+                    </span>
+                    /
+                    <span id="total-round">
+                        0
+                    </span>
+                </div>                
+            </div>
+        </div>
+        <div id="game-field">
+            <div id="user-attack" class="attack">
+                <img src="media/rock.png" alt="rock attack">
+            </div>
+            <div id="game-result">
+                <p><b>You Win! </b><i>Rock</i> &nbsp; beats Scissors</p>
+            </div>
+            <div id="computer-attack" class="attack">
+                <img src="media/scissors.png"  alt="rock attack">
+            </div>
+        </div>
+        <div id="controls">
+            <h1>Choose your attack</h1>
+            <div id="options">
+                <div class="choices" id="op-rock"><img src="media/rock.png" alt="rock"></div>
+                <div class="choices" id="op-paper"><img src="media/paper.png" alt="paper"></div>
+                <div class="choices"><img src="media/scissors.png" alt="scissors" id="op-scissors"></div>
+            </div>            
+        </div>
+    </div>    
+    <script src="src/script.js"></script>
 </body>
 </html>
