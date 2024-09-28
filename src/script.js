@@ -40,7 +40,7 @@ function playRound(humanChoice, computerChoice){
     let cScissors = computerChoice == "Scissors"
     let loseMessage = `You Lose! ${computerChoice.toUpperCase()} beats ${humanChoice}`
     let winMessage = `You Win! ${humanChoice} beats ${computerChoice.toUpperCase()}`
-    let tieMessage = "It's a tie!"
+    let tieMessage = "It’s a tie for now! The game isn’t over yet"
    
     console.log(
         `Your Choice: ${humanChoice} \nComputer Choice: ${computerChoice.toUpperCase()}
